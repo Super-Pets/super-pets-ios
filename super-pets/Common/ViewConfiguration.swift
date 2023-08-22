@@ -10,7 +10,6 @@ extension ViewConfiguration {
     func buildLayout() {
         buildViewHierarchy()
         setupContraints()
+        configureViews()
     }
-    
-    func configureViews() { }
 }
