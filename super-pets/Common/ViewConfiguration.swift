@@ -8,8 +8,8 @@ protocol ViewConfiguration {
 
 extension ViewConfiguration {
     func buildLayout() {
+        configureViews()
         buildViewHierarchy()
         setupContraints()
-        configureViews()
     }
 }

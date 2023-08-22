@@ -43,6 +43,14 @@ final class HomeViewController: UIViewController, ViewConfiguration {
         return image
     }()
     
+    private lazy var buttonStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 20
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
     private lazy var adoptButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Quero adotar", for: .normal)
@@ -54,21 +62,14 @@ final class HomeViewController: UIViewController, ViewConfiguration {
         return button
     }()
     
-    private lazy var buttonStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 20
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    private lazy var signupButton: UIButton = {
+    private lazy var registerButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("Quero divulgar um animal", for: .normal)
         button.setTitleColor(UIColor(named: Strings.Color.darkGray), for: .normal)
         button.backgroundColor = UIColor(named: Strings.Color.purple)
         button.layer.cornerRadius = 12
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(registerAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -76,6 +77,11 @@ final class HomeViewController: UIViewController, ViewConfiguration {
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
+    }
+    
+    @objc
+    private func registerAction() {
+        self.navigationController?.pushViewController(RegisterViewController(), animated: true)
     }
     
     func configureViews() {
@@ -90,7 +96,7 @@ final class HomeViewController: UIViewController, ViewConfiguration {
         mainStack.addArrangedSubview(bgImage)
         view.addSubview(buttonStack)
         buttonStack.addArrangedSubview(adoptButton)
-        buttonStack.addArrangedSubview(signupButton)
+        buttonStack.addArrangedSubview(registerButton)
     }
     
     func setupContraints() {
@@ -114,7 +120,7 @@ final class HomeViewController: UIViewController, ViewConfiguration {
 
             adoptButton.heightAnchor.constraint(equalToConstant: 70),
             
-            signupButton.heightAnchor.constraint(equalToConstant: 70)
+            registerButton.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
 }
