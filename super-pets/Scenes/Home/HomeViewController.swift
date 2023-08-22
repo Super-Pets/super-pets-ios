@@ -29,8 +29,8 @@ final class HomeViewController: UIViewController, ViewConfiguration {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Adoção é um ato de amor e responsabilidade"
-        label.textColor = UIColor(named: Strings.Color.lightGray)
-        label.font = UIFont.systemFont(ofSize: 26)
+        label.textColor = UIColor(named: Strings.Color.darkGray)
+        label.font = UIFont.italicSystemFont(ofSize: 26)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -52,6 +52,14 @@ final class HomeViewController: UIViewController, ViewConfiguration {
         button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
+    }()
+    
+    private lazy var buttonStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 20
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
     private lazy var signupButton: UIButton = {
@@ -80,8 +88,9 @@ final class HomeViewController: UIViewController, ViewConfiguration {
         mainStack.addArrangedSubview(appLabel)
         mainStack.addArrangedSubview(titleLabel)
         mainStack.addArrangedSubview(bgImage)
-        view.addSubview(adoptButton)
-        view.addSubview(signupButton)
+        view.addSubview(buttonStack)
+        buttonStack.addArrangedSubview(adoptButton)
+        buttonStack.addArrangedSubview(signupButton)
     }
     
     func setupContraints() {
@@ -99,14 +108,12 @@ final class HomeViewController: UIViewController, ViewConfiguration {
             bgImage.heightAnchor.constraint(equalToConstant: 200),
             bgImage.widthAnchor.constraint(equalToConstant: 100),
             
-            adoptButton.topAnchor.constraint(equalTo: bgView.bottomAnchor, constant: 40),
-            adoptButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            adoptButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            buttonStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            buttonStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            buttonStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+
             adoptButton.heightAnchor.constraint(equalToConstant: 70),
             
-            signupButton.topAnchor.constraint(equalTo: adoptButton.bottomAnchor, constant: 20),
-            signupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             signupButton.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
