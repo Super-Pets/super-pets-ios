@@ -4,7 +4,7 @@ final class HomeViewController: UIViewController, ViewConfiguration {
     private lazy var bgView: UIView = {
         let content = UIView()
         content.backgroundColor = UIColor(named: Strings.Color.white)
-        content.layer.cornerRadius = 16
+        content.layer.cornerRadius = 20
         content.translatesAutoresizingMaskIntoConstraints = false
         return content
     }()
@@ -43,7 +43,27 @@ final class HomeViewController: UIViewController, ViewConfiguration {
         return image
     }()
     
+    private lazy var adoptButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Quero adotar", for: .normal)
+        button.setTitleColor(UIColor(named: Strings.Color.darkGray), for: .normal)
+        button.backgroundColor = UIColor(named: Strings.Color.orange)
+        button.layer.cornerRadius = 12
+        button.clipsToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
+    private lazy var signupButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Quero divulgar um animal", for: .normal)
+        button.setTitleColor(UIColor(named: Strings.Color.darkGray), for: .normal)
+        button.backgroundColor = UIColor(named: Strings.Color.purple)
+        button.layer.cornerRadius = 12
+        button.clipsToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +80,8 @@ final class HomeViewController: UIViewController, ViewConfiguration {
         mainStack.addArrangedSubview(appLabel)
         mainStack.addArrangedSubview(titleLabel)
         mainStack.addArrangedSubview(bgImage)
+        view.addSubview(adoptButton)
+        view.addSubview(signupButton)
     }
     
     func setupContraints() {
@@ -75,7 +97,17 @@ final class HomeViewController: UIViewController, ViewConfiguration {
             mainStack.bottomAnchor.constraint(equalTo: bgView.bottomAnchor),
             
             bgImage.heightAnchor.constraint(equalToConstant: 200),
-            bgImage.widthAnchor.constraint(equalToConstant: 100)
+            bgImage.widthAnchor.constraint(equalToConstant: 100),
+            
+            adoptButton.topAnchor.constraint(equalTo: bgView.bottomAnchor, constant: 40),
+            adoptButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            adoptButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            adoptButton.heightAnchor.constraint(equalToConstant: 70),
+            
+            signupButton.topAnchor.constraint(equalTo: adoptButton.bottomAnchor, constant: 20),
+            signupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            signupButton.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
 }
