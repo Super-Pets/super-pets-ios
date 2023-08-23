@@ -40,6 +40,17 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
     
     private lazy var descriptionTextField = RegisterTextFieldComponent(placeholderText: "Fale um pouco sobre ele")
     
+    private lazy var mainButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setTitle("Cadastrar nenem", for: .normal)
+        button.setTitleColor(UIColor(named: Strings.Color.darkGray), for: .normal)
+        button.backgroundColor = UIColor(named: Strings.Color.lightPurple)
+        button.layer.cornerRadius = 12
+        button.clipsToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
@@ -77,6 +88,7 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
         mainStack.addArrangedSubview(vaccineTextField)
         mainStack.addArrangedSubview(castrationTextField)
         mainStack.addArrangedSubview(descriptionTextField)
+        mainStack.addArrangedSubview(mainButton)
     }
     
     func setupContraints() {
@@ -97,6 +109,8 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
             mainStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
             mainStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             mainStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            
+            mainButton.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
 }
