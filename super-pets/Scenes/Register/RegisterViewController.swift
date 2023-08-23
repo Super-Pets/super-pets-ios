@@ -75,7 +75,7 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
     @objc
     private func mainButtonAction() {
         let alertController = UIAlertController(title: "Cadastro concluido",
-                                                message: "Nenê cadastrado com sucesso!! Você pode visualizar ele pela opção 'Quero adotar' na página anterior <3",
+                                                message: "Nenê cadastrado com sucesso!! Você pode visualizar ele pela opção 'Quero adotar' na tela anterior <3",
                                                 preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Legal", style: .default) { [weak self] (action) in
