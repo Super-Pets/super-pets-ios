@@ -9,6 +9,21 @@ final class AdoptViewController: UIViewController, ViewConfiguration {
         return content
     }()
     
+    let layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        return layout
+    }()
+    
+    private lazy var collection: UICollectionView = {
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.dataSource = self
+        collection.delegate = self
+        collection.register(AdoptViewCell.self, forCellWithReuseIdentifier: "AdoptViewCell")
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        return collection
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
@@ -35,6 +50,7 @@ final class AdoptViewController: UIViewController, ViewConfiguration {
     
     func buildViewHierarchy() {
         view.addSubview(bgView)
+        bgView.addSubview(collection)
     }
     
     func setupContraints() {
@@ -43,6 +59,42 @@ final class AdoptViewController: UIViewController, ViewConfiguration {
             bgView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bgView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bgView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            collection.topAnchor.constraint(equalTo: bgView.topAnchor),
+            collection.leadingAnchor.constraint(equalTo: bgView.leadingAnchor),
+            collection.trailingAnchor.constraint(equalTo: bgView.trailingAnchor),
+            collection.bottomAnchor.constraint(equalTo: bgView.bottomAnchor),
         ])
+    }
+}
+
+extension AdoptViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdoptViewCell", for: indexPath) as? AdoptViewCell else { return UICollectionViewCell() }
+        return cell
+    }
+}
+
+extension AdoptViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 162, height: 200)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        let totalCellWidth: CGFloat = 162.0 * 2.0
+        let totalSpacingWidth = collectionView.frame.width - totalCellWidth
+        let spacing = totalSpacingWidth / 3.0
+        return spacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let totalCellWidth: CGFloat = 162.0 * 2.0
+        let totalSpacingWidth = collectionView.frame.width - totalCellWidth
+        let sideInset = totalSpacingWidth / 3.0
+        return UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
     }
 }
