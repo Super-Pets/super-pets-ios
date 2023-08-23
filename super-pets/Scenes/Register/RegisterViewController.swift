@@ -47,6 +47,7 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
         button.backgroundColor = UIColor(named: Strings.Color.lightPurple)
         button.layer.cornerRadius = 12
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(mainButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -67,8 +68,23 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
     }
     
     @objc
-    func buttonTapped() {
+    private func buttonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    private func mainButtonAction() {
+        let alertController = UIAlertController(title: "Cadastro concluido",
+                                                message: "Nenê cadastrado com sucesso!! Você pode visualizar ele pela opção 'Quero adotar' na página anterior <3",
+                                                preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Legal", style: .default) { [weak self] (action) in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true)
     }
     
     func configureViews() {
