@@ -6,7 +6,7 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
-        title = "Divulgue um animal"
+        title = "Cadastre um animal"
     }
     
     override func viewWillAppear(_ animated: Bool) {

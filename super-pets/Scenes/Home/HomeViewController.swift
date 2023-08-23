@@ -101,7 +101,7 @@ final class HomeViewController: UIViewController, ViewConfiguration {
     
     func setupContraints() {
         NSLayoutConstraint.activate([
-            bgView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -60),
+            bgView.topAnchor.constraint(equalTo: view.topAnchor),
             bgView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bgView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bgView.heightAnchor.constraint(equalToConstant: 500),
@@ -114,7 +114,7 @@ final class HomeViewController: UIViewController, ViewConfiguration {
             bgImage.heightAnchor.constraint(equalToConstant: 200),
             bgImage.widthAnchor.constraint(equalToConstant: 100),
             
-            buttonStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            buttonStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -70),
             buttonStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             buttonStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
 

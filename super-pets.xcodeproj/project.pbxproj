@@ -15,6 +15,7 @@
 		87D18D062A9447BB00112BBF /* ViewConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D052A9447BB00112BBF /* ViewConfiguration.swift */; };
 		87D18D082A9448E500112BBF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D072A9448E500112BBF /* Strings.swift */; };
 		87D18D0B2A95346200112BBF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D0A2A95346200112BBF /* RegisterViewController.swift */; };
+		87D18D0E2A953DCE00112BBF /* RegisterTextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D0D2A953DCE00112BBF /* RegisterTextFieldComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		87D18D052A9447BB00112BBF /* ViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfiguration.swift; sourceTree = "<group>"; };
 		87D18D072A9448E500112BBF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		87D18D0A2A95346200112BBF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		87D18D0D2A953DCE00112BBF /* RegisterTextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTextFieldComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +110,18 @@
 		87D18D092A95344D00112BBF /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				87D18D0C2A953B5B00112BBF /* Item */,
 				87D18D0A2A95346200112BBF /* RegisterViewController.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		87D18D0C2A953B5B00112BBF /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				87D18D0D2A953DCE00112BBF /* RegisterTextFieldComponent.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +196,7 @@
 			files = (
 				87D18CF22A917B1100112BBF /* HomeViewController.swift in Sources */,
 				87D18D062A9447BB00112BBF /* ViewConfiguration.swift in Sources */,
+				87D18D0E2A953DCE00112BBF /* RegisterTextFieldComponent.swift in Sources */,
 				87D18D082A9448E500112BBF /* Strings.swift in Sources */,
 				87D18D0B2A95346200112BBF /* RegisterViewController.swift in Sources */,
 				87D18CEE2A917B1100112BBF /* AppDelegate.swift in Sources */,
