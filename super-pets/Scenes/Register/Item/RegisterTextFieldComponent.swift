@@ -5,6 +5,7 @@ final class RegisterTextFieldComponent: UIView, ViewConfiguration {
         let view = UIView()
         view.backgroundColor = UIColor(named: Strings.Color.white)
         view.layer.cornerRadius = 8
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -15,6 +16,7 @@ final class RegisterTextFieldComponent: UIView, ViewConfiguration {
         textView.font = UIFont.systemFont(ofSize: 14)
         textView.textColor = UIColor(named: Strings.Color.darkGray)
         textView.backgroundColor = UIColor(named: Strings.Color.white)
+        textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
@@ -81,8 +83,8 @@ final class RegisterTextFieldComponent: UIView, ViewConfiguration {
             
             inputText.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 16),
             inputText.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 24),
-            inputText.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: 16),
-            inputText.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: 24),
+            inputText.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -16),
+            inputText.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -24),
             
             placeholderLabel.topAnchor.constraint(equalTo: inputText.topAnchor),
             placeholderLabel.leadingAnchor.constraint(equalTo: inputText.leadingAnchor)
