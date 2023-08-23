@@ -16,6 +16,7 @@
 		87D18D082A9448E500112BBF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D072A9448E500112BBF /* Strings.swift */; };
 		87D18D0B2A95346200112BBF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D0A2A95346200112BBF /* RegisterViewController.swift */; };
 		87D18D0E2A953DCE00112BBF /* RegisterTextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D0D2A953DCE00112BBF /* RegisterTextFieldComponent.swift */; };
+		87D18D112A95A08900112BBF /* AdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D102A95A08900112BBF /* AdoptViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		87D18D072A9448E500112BBF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		87D18D0A2A95346200112BBF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		87D18D0D2A953DCE00112BBF /* RegisterTextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTextFieldComponent.swift; sourceTree = "<group>"; };
+		87D18D102A95A08900112BBF /* AdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 		87D18D022A94475000112BBF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				87D18D0F2A95A06100112BBF /* Adopt */,
 				87D18D092A95344D00112BBF /* Register */,
 				87D18D032A94475800112BBF /* Home */,
 			);
@@ -122,6 +125,14 @@
 				87D18D0D2A953DCE00112BBF /* RegisterTextFieldComponent.swift */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		87D18D0F2A95A06100112BBF /* Adopt */ = {
+			isa = PBXGroup;
+			children = (
+				87D18D102A95A08900112BBF /* AdoptViewController.swift */,
+			);
+			path = Adopt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +208,7 @@
 				87D18CF22A917B1100112BBF /* HomeViewController.swift in Sources */,
 				87D18D062A9447BB00112BBF /* ViewConfiguration.swift in Sources */,
 				87D18D0E2A953DCE00112BBF /* RegisterTextFieldComponent.swift in Sources */,
+				87D18D112A95A08900112BBF /* AdoptViewController.swift in Sources */,
 				87D18D082A9448E500112BBF /* Strings.swift in Sources */,
 				87D18D0B2A95346200112BBF /* RegisterViewController.swift in Sources */,
 				87D18CEE2A917B1100112BBF /* AppDelegate.swift in Sources */,

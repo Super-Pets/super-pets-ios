@@ -58,6 +58,7 @@ final class HomeViewController: UIViewController, ViewConfiguration {
         button.backgroundColor = UIColor(named: Strings.Color.orange)
         button.layer.cornerRadius = 12
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(adoptAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -77,6 +78,11 @@ final class HomeViewController: UIViewController, ViewConfiguration {
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
+    }
+    
+    @objc
+    private func adoptAction() {
+        self.navigationController?.pushViewController(AdoptViewController(), animated: true)
     }
     
     @objc
