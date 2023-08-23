@@ -1,9 +1,14 @@
 import UIKit
 
 final class AdoptViewController: UIViewController, ViewConfiguration {
+    private lazy var bgView: UIView = {
+        let content = UIView()
+        content.backgroundColor = UIColor(named: Strings.Color.white)
+        content.layer.cornerRadius = 20
+        content.translatesAutoresizingMaskIntoConstraints = false
+        return content
+    }()
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
@@ -29,10 +34,15 @@ final class AdoptViewController: UIViewController, ViewConfiguration {
     }
     
     func buildViewHierarchy() {
-        
+        view.addSubview(bgView)
     }
     
     func setupContraints() {
-        
+        NSLayoutConstraint.activate([
+            bgView.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            bgView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bgView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bgView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
     }
 }
