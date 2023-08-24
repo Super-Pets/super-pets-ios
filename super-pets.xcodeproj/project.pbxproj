@@ -18,6 +18,9 @@
 		87D18D0E2A953DCE00112BBF /* RegisterTextFieldComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D0D2A953DCE00112BBF /* RegisterTextFieldComponent.swift */; };
 		87D18D112A95A08900112BBF /* AdoptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D102A95A08900112BBF /* AdoptViewController.swift */; };
 		87D18D142A95A76200112BBF /* AdoptViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D132A95A76200112BBF /* AdoptViewCell.swift */; };
+		87D18D182A96ED9C00112BBF /* AnimalsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D172A96ED9C00112BBF /* AnimalsModel.swift */; };
+		87D18D1A2A96EDB300112BBF /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D192A96EDB300112BBF /* ApiService.swift */; };
+		87D18D1C2A96EEAA00112BBF /* RegisterAnimalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D1B2A96EEAA00112BBF /* RegisterAnimalParams.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		87D18D0D2A953DCE00112BBF /* RegisterTextFieldComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTextFieldComponent.swift; sourceTree = "<group>"; };
 		87D18D102A95A08900112BBF /* AdoptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptViewController.swift; sourceTree = "<group>"; };
 		87D18D132A95A76200112BBF /* AdoptViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptViewCell.swift; sourceTree = "<group>"; };
+		87D18D172A96ED9C00112BBF /* AnimalsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsModel.swift; sourceTree = "<group>"; };
+		87D18D192A96EDB300112BBF /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		87D18D1B2A96EEAA00112BBF /* RegisterAnimalParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAnimalParams.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,8 @@
 		87D18D022A94475000112BBF /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				87D18D162A96ED5E00112BBF /* Model */,
+				87D18D152A96ECE900112BBF /* Network */,
 				87D18D0F2A95A06100112BBF /* Adopt */,
 				87D18D092A95344D00112BBF /* Register */,
 				87D18D032A94475800112BBF /* Home */,
@@ -144,6 +152,23 @@
 				87D18D132A95A76200112BBF /* AdoptViewCell.swift */,
 			);
 			path = Item;
+			sourceTree = "<group>";
+		};
+		87D18D152A96ECE900112BBF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				87D18D192A96EDB300112BBF /* ApiService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		87D18D162A96ED5E00112BBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87D18D172A96ED9C00112BBF /* AnimalsModel.swift */,
+				87D18D1B2A96EEAA00112BBF /* RegisterAnimalParams.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,14 +241,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D18D1C2A96EEAA00112BBF /* RegisterAnimalParams.swift in Sources */,
 				87D18CF22A917B1100112BBF /* HomeViewController.swift in Sources */,
 				87D18D062A9447BB00112BBF /* ViewConfiguration.swift in Sources */,
 				87D18D0E2A953DCE00112BBF /* RegisterTextFieldComponent.swift in Sources */,
 				87D18D112A95A08900112BBF /* AdoptViewController.swift in Sources */,
 				87D18D142A95A76200112BBF /* AdoptViewCell.swift in Sources */,
 				87D18D082A9448E500112BBF /* Strings.swift in Sources */,
+				87D18D1A2A96EDB300112BBF /* ApiService.swift in Sources */,
 				87D18D0B2A95346200112BBF /* RegisterViewController.swift in Sources */,
 				87D18CEE2A917B1100112BBF /* AppDelegate.swift in Sources */,
+				87D18D182A96ED9C00112BBF /* AnimalsModel.swift in Sources */,
 				87D18CF02A917B1100112BBF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
