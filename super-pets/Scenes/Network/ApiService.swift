@@ -43,10 +43,14 @@ enum TypeOfInformation {
 }
 
 protocol ApiServiceProtocol {
-    
+    func fetchAdoptables(completion: @escaping (Result<[AnimalsModel], ApiError>) -> Void)
 }
 
 final class ApiService: ApiServiceProtocol {
+    func fetchAdoptables(completion: @escaping (Result<[AnimalsModel], ApiError>) -> Void) {
+        fetchData(url: TypeOfInformation.adoptables.url, completion: completion)
+    }
+    
     private func fetchData<T: Codable>(url: URL?, completion: @escaping (Result<T, ApiError>) -> Void) {
         guard let url = url else {
             return completion(.failure(ApiError.invalidURL))
