@@ -8,6 +8,40 @@ enum ApiError: Error {
          decodingError(description: String)
 }
 
+enum TypeOfInformation {
+    case register(params: [String: String]?)
+    case adoptables
+    
+    var baseURL: String {
+        "https://www.aindanaotem.com"
+    }
+    
+    var url: URL? {
+        switch self {
+        case .register(params: let params):
+            guard let params = params else {
+                return getUrl(of: "\(baseURL)/aindanaotem")
+            }
+            var urlWithParams = URLComponents(string: "\(baseURL)/aindanaotem")
+            let configuredParams = setupQueryParams(using: params)
+            urlWithParams?.queryItems = configuredParams
+            let url = urlWithParams?.url
+            return url
+        case .adoptables:
+            return getUrl(of: "\(baseURL)/aindanaotem")
+        }
+    }
+    
+    func setupQueryParams(using params: [String: String]) -> [URLQueryItem] {
+        let queryParams: [URLQueryItem] = params.map { URLQueryItem(name: $0.key, value: $0.value) }
+        return queryParams
+    }
+    
+    func getUrl(of value: String) -> URL? {
+        URL(string: value)
+    }
+}
+
 protocol ApiServiceProtocol {
     
 }
