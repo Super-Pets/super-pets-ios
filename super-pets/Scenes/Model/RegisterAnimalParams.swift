@@ -1,6 +1,6 @@
 import Foundation
 
-struct RegisteranimalParams: Codable {
+struct RegisterAnimalParams: Codable {
     let name: String
     let specie: String
     let animalDescription: String
