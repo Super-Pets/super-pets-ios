@@ -22,6 +22,7 @@
 		87D18D1A2A96EDB300112BBF /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D192A96EDB300112BBF /* ApiService.swift */; };
 		87D18D1C2A96EEAA00112BBF /* RegisterAnimalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D1B2A96EEAA00112BBF /* RegisterAnimalParams.swift */; };
 		87D18D1E2A9CE24500112BBF /* RegisterCompletedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D1D2A9CE24500112BBF /* RegisterCompletedModel.swift */; };
+		87D18D202A9D8D1000112BBF /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18D1F2A9D8D1000112BBF /* RegisterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		87D18D192A96EDB300112BBF /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		87D18D1B2A96EEAA00112BBF /* RegisterAnimalParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAnimalParams.swift; sourceTree = "<group>"; };
 		87D18D1D2A9CE24500112BBF /* RegisterCompletedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCompletedModel.swift; sourceTree = "<group>"; };
+		87D18D1F2A9D8D1000112BBF /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				87D18D0C2A953B5B00112BBF /* Item */,
 				87D18D0A2A95346200112BBF /* RegisterViewController.swift */,
+				87D18D1F2A9D8D1000112BBF /* RegisterViewModel.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				87D18D082A9448E500112BBF /* Strings.swift in Sources */,
 				87D18D1E2A9CE24500112BBF /* RegisterCompletedModel.swift in Sources */,
 				87D18D1A2A96EDB300112BBF /* ApiService.swift in Sources */,
+				87D18D202A9D8D1000112BBF /* RegisterViewModel.swift in Sources */,
 				87D18D0B2A95346200112BBF /* RegisterViewController.swift in Sources */,
 				87D18CEE2A917B1100112BBF /* AppDelegate.swift in Sources */,
 				87D18D182A96ED9C00112BBF /* AnimalsModel.swift in Sources */,

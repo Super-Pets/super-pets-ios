@@ -44,6 +44,10 @@ final class RegisterTextFieldComponent: UIView, ViewConfiguration {
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
     
+    func getCurrentText() -> String {
+        return inputText.text
+    }
+    
     private func adjustTextViewHeight() {
         let newSize = inputText.sizeThatFits(CGSize(width: inputText.frame.width, height: .infinity))
         let newHeight = max(newSize.height, 66)

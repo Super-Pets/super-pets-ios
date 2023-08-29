@@ -67,6 +67,16 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
         self.navigationItem.leftBarButtonItem = navigationButton
     }
     
+    private let viewModel: RegisterViewModelProtocol
+    
+    init(viewModel: RegisterViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { nil }
+    
     @objc
     private func buttonTapped() {
         self.navigationController?.popViewController(animated: true)
@@ -74,11 +84,46 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
     
     @objc
     private func mainButtonAction() {
+        guard let castrationValidation = viewModel.boolValue(from: castrationTextField.getCurrentText()) else {
+            return
+        }
+        
+        viewModel.registerAnimal(
+            name: nameTextField.getCurrentText(),
+            species: speciesTextField.getCurrentText(),
+            gender: genderTextField.getCurrentText(),
+            age: ageTextField.getCurrentText(),
+            size: sizeTextField.getCurrentText(),
+            state: stateTextField.getCurrentText(),
+            vaccines: vaccineTextField.getCurrentText(),
+            castration: castrationValidation,
+            description: descriptionTextField.getCurrentText()) { [weak self] in
+                self?.successAlert()
+            } onFailure: { _ in
+                self.errorAlert()
+            }
+    }
+    
+    private func successAlert() {
         let alertController = UIAlertController(title: "Cadastro concluido",
                                                 message: "Nenê cadastrado com sucesso!! Você pode visualizar ele pela opção 'Quero adotar' na tela anterior <3",
                                                 preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Legal", style: .default) { [weak self] (action) in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true)
+    }
+    
+    private func errorAlert() {
+        let alertController = UIAlertController(title: "Não deu certo",
+                                                message: "Nos desculpe, mas tente novamente. Parece que deu ruim aqui",
+                                                preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Poxa..", style: .destructive) { [weak self] (action) in
             self?.navigationController?.popViewController(animated: true)
         }
         
