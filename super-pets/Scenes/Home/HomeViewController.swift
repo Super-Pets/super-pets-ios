@@ -87,7 +87,7 @@ final class HomeViewController: UIViewController, ViewConfiguration {
     
     @objc
     private func registerAction() {
-        self.navigationController?.pushViewController(RegisterViewController(), animated: true)
+        self.navigationController?.pushViewController(RegisterFactory.build(), animated: true)
     }
     
     func configureViews() {
