@@ -18,7 +18,6 @@ final class AdoptViewCell: UICollectionViewCell, ViewConfiguration {
     var petImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = UIColor(named: Strings.Color.rouse)
         image.layer.cornerRadius = 20
         return image
     }()
@@ -31,6 +30,22 @@ final class AdoptViewCell: UICollectionViewCell, ViewConfiguration {
         return label
     }()
     
+    var sizeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(named: Strings.Color.darkGray)
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
+    }()
+    
+    var stateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(named: Strings.Color.darkGray)
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildLayout()
@@ -38,8 +53,11 @@ final class AdoptViewCell: UICollectionViewCell, ViewConfiguration {
     
     required init?(coder: NSCoder) { nil }
     
-    func update(with animal: AnimalsModel) {
+    func update(with animal: AnimalsModel, mockImageName: String) {
         animalLabel.text = animal.name
+        sizeLabel.text = animal.size
+        stateLabel.text = animal.local
+        petImage.image = UIImage(named: mockImageName)
     }
     
     func configureViews() {
@@ -51,6 +69,8 @@ final class AdoptViewCell: UICollectionViewCell, ViewConfiguration {
         content.addSubview(mainStack)
         mainStack.addArrangedSubview(petImage)
         mainStack.addArrangedSubview(animalLabel)
+        mainStack.addArrangedSubview(sizeLabel)
+        mainStack.addArrangedSubview(stateLabel)
     }
     
     func setupContraints() {

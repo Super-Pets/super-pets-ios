@@ -43,6 +43,7 @@ final class AdoptViewController: UIViewController, ViewConfiguration {
     
     private var viewModel: AdoptViewModelProtocol?
     private var animals: [AnimalsModel] = []
+    let mockImageNames = ["jade", "juju"]
     
     init(viewModel: AdoptViewModelProtocol) {
         self.viewModel = viewModel
@@ -90,7 +91,8 @@ extension AdoptViewController: UICollectionViewDataSource, UICollectionViewDeleg
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdoptViewCell", for: indexPath) as? AdoptViewCell else { return UICollectionViewCell() }
         
         let animal = animals[indexPath.row]
-         cell.update(with: animal)
+        let mockImageName = mockImageNames[indexPath.row % mockImageNames.count]
+        cell.update(with: animal, mockImageName: mockImageName)
         
         return cell
     }
@@ -98,7 +100,7 @@ extension AdoptViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
 extension AdoptViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 162, height: 200)
+        return CGSize(width: 162, height: 250)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
