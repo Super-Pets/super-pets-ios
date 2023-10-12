@@ -82,7 +82,7 @@ final class HomeViewController: UIViewController, ViewConfiguration {
     
     @objc
     private func adoptAction() {
-        self.navigationController?.pushViewController(AdoptViewController(), animated: true)
+        self.navigationController?.pushViewController(AdoptFactory.build(), animated: true)
     }
     
     @objc

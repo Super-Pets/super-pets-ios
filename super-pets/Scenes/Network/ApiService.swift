@@ -13,15 +13,15 @@ enum TypeOfInformation {
     case adoptables
     
     var baseURL: String {
-        "https://www.aindanaotem.com"
+        "http://localhost:5097"
     }
     
     var endPoint: String {
         switch self {
         case .register:
-            return "/registerEndpoint"
+            return "/animals"
         case .adoptables:
-            return "/adoptablesEndpoint"
+            return "/animals"
         }
     }
     
@@ -44,26 +44,46 @@ protocol ApiServiceProtocol {
     func registerAnimal(animal: RegisterAnimalParams, completion: @escaping (Result<RegisterCompletedModel, ApiError>) -> Void)
 }
 
-final class ApiService: ApiServiceProtocol {
+final class ApiService: NSObject, ApiServiceProtocol, URLSessionDelegate {
     func fetchAdoptables(completion: @escaping (Result<[AnimalsModel], ApiError>) -> Void) {
         fetchData(info: .adoptables, body: nil, completion: completion)
     }
     
     func registerAnimal(animal: RegisterAnimalParams, completion: @escaping (Result<RegisterCompletedModel, ApiError>) -> Void) {
         let body: [String: Any] = [
-            "name": animal.name,
-            "specie": animal.specie,
-            "animalDescription": animal.animalDescription,
-            "gender": animal.gender,
-            "age": animal.age,
-            "size": animal.size,
-            "state": animal.state,
-            "vaccine": animal.vaccine,
-            "castration": animal.castration,
+            "Name": animal.name,
+            "Species": animal.specie,
+            "Description": animal.animalDescription,
+            "Gender": animal.gender,
+            "Age": animal.age,
+            "Size": animal.size,
+            "Local": animal.state,
+            "Vaccines": animal.vaccine,
+            "Castration": animal.castration,
             "image": animal.image,
         ]
         
         fetchData(info: .register, body: body, completion: completion)
+    }
+    
+    lazy var session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config, delegate: self, delegateQueue: nil)
+    }()
+    
+    func urlSession(_ session: URLSession,
+                    didReceive challenge: URLAuthenticationChallenge,
+                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust,
+           let serverTrust = challenge.protectionSpace.serverTrust {
+            
+            let credential = URLCredential(trust: serverTrust)
+            completionHandler(.useCredential, credential)
+            
+        } else {
+            completionHandler(.performDefaultHandling, nil)
+        }
     }
     
     private func fetchData<T: Codable>(info: TypeOfInformation, body: [String: Any]?, completion: @escaping (Result<T, ApiError>) -> Void) {
@@ -79,7 +99,7 @@ final class ApiService: ApiServiceProtocol {
             request.httpBody = bodyData
         }
         
-        let dataTask = URLSession.shared.dataTask(with: url) { data, response, error in
+        let dataTask = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(.requestError(description: error.localizedDescription)))
                 return

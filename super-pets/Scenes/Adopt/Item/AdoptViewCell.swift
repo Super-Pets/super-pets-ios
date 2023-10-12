@@ -26,7 +26,6 @@ final class AdoptViewCell: UICollectionViewCell, ViewConfiguration {
     var animalLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Akina"
         label.textColor = UIColor(named: Strings.Color.darkGray)
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
@@ -38,6 +37,10 @@ final class AdoptViewCell: UICollectionViewCell, ViewConfiguration {
     }
     
     required init?(coder: NSCoder) { nil }
+    
+    func update(with animal: AnimalsModel) {
+        animalLabel.text = animal.name
+    }
     
     func configureViews() {
         translatesAutoresizingMaskIntoConstraints = false

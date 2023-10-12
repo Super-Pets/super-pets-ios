@@ -28,6 +28,8 @@ final class AdoptViewController: UIViewController, ViewConfiguration {
         super.viewDidLoad()
         buildLayout()
         title = "Adotáveis"
+        viewModel?.getAnimals()
+        viewModel?.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,17 @@ final class AdoptViewController: UIViewController, ViewConfiguration {
         let navigationButton = UIBarButtonItem(customView: customButton)
         self.navigationItem.leftBarButtonItem = navigationButton
     }
+    
+    private var viewModel: AdoptViewModelProtocol?
+    private var animals: [AnimalsModel] = []
+    
+    init(viewModel: AdoptViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) { nil }
     
     @objc
     private func buttonTapped() {
@@ -70,11 +83,15 @@ final class AdoptViewController: UIViewController, ViewConfiguration {
 
 extension AdoptViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        20
+        animals.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdoptViewCell", for: indexPath) as? AdoptViewCell else { return UICollectionViewCell() }
+        
+        let animal = animals[indexPath.row]
+         cell.update(with: animal)
+        
         return cell
     }
 }
@@ -96,5 +113,12 @@ extension AdoptViewController: UICollectionViewDelegateFlowLayout {
         let totalSpacingWidth = collectionView.frame.width - totalCellWidth
         let sideInset = totalSpacingWidth / 3.0
         return UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
+    }
+}
+
+extension AdoptViewController: AdoptViewModelDelegate {
+    func didFetchAnimals(_ animals: [AnimalsModel]) {
+        self.animals = animals
+        self.collection.reloadData()
     }
 }

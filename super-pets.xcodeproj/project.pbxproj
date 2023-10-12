@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		876854CA2AD898F500EAA76B /* AdoptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876854C92AD898F500EAA76B /* AdoptViewModel.swift */; };
+		876854CC2AD89C0900EAA76B /* AdoptFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876854CB2AD89C0900EAA76B /* AdoptFactory.swift */; };
 		87D18CEE2A917B1100112BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18CED2A917B1100112BBF /* AppDelegate.swift */; };
 		87D18CF02A917B1100112BBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18CEF2A917B1100112BBF /* SceneDelegate.swift */; };
 		87D18CF22A917B1100112BBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D18CF12A917B1100112BBF /* HomeViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		876854C92AD898F500EAA76B /* AdoptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptViewModel.swift; sourceTree = "<group>"; };
+		876854CB2AD89C0900EAA76B /* AdoptFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdoptFactory.swift; sourceTree = "<group>"; };
 		87D18CEA2A917B1100112BBF /* super-pets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "super-pets.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D18CED2A917B1100112BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87D18CEF2A917B1100112BBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			children = (
 				87D18D122A95A73400112BBF /* Item */,
 				87D18D102A95A08900112BBF /* AdoptViewController.swift */,
+				876854C92AD898F500EAA76B /* AdoptViewModel.swift */,
+				876854CB2AD89C0900EAA76B /* AdoptFactory.swift */,
 			);
 			path = Adopt;
 			sourceTree = "<group>";
@@ -258,12 +264,14 @@
 				87D18D142A95A76200112BBF /* AdoptViewCell.swift in Sources */,
 				87D18D082A9448E500112BBF /* Strings.swift in Sources */,
 				87D18D1E2A9CE24500112BBF /* RegisterCompletedModel.swift in Sources */,
+				876854CC2AD89C0900EAA76B /* AdoptFactory.swift in Sources */,
 				87D18D1A2A96EDB300112BBF /* ApiService.swift in Sources */,
 				87D18D222A9D94A600112BBF /* RegisterFactory.swift in Sources */,
 				87D18D202A9D8D1000112BBF /* RegisterViewModel.swift in Sources */,
 				87D18D0B2A95346200112BBF /* RegisterViewController.swift in Sources */,
 				87D18CEE2A917B1100112BBF /* AppDelegate.swift in Sources */,
 				87D18D182A96ED9C00112BBF /* AnimalsModel.swift in Sources */,
+				876854CA2AD898F500EAA76B /* AdoptViewModel.swift in Sources */,
 				87D18CF02A917B1100112BBF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

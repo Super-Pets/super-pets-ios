@@ -98,9 +98,13 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
             vaccines: vaccineTextField.getCurrentText(),
             castration: castrationValidation,
             description: descriptionTextField.getCurrentText()) { [weak self] in
-                self?.successAlert()
+                DispatchQueue.main.async {
+                    self?.successAlert()
+                }
             } onFailure: { _ in
-                self.errorAlert()
+                DispatchQueue.main.async {
+                    self.errorAlert()
+                }
             }
     }
     
