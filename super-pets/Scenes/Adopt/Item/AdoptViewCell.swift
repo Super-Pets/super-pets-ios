@@ -18,7 +18,6 @@ final class AdoptViewCell: UICollectionViewCell, ViewConfiguration {
     var petImage: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.layer.cornerRadius = 20
         return image
     }()
     

@@ -93,6 +93,8 @@ extension AdoptViewController: UICollectionViewDataSource, UICollectionViewDeleg
         let animal = animals[indexPath.row]
         let mockImageName = mockImageNames[indexPath.row % mockImageNames.count]
         cell.update(with: animal, mockImageName: mockImageName)
+        cell.petImage.layer.cornerRadius = 20
+        cell.petImage.clipsToBounds = true
         
         return cell
     }
