@@ -48,6 +48,13 @@ final class RegisterTextFieldComponent: UIView, ViewConfiguration {
         return inputText.text
     }
     
+    func getAge() -> Int {
+        if let text = inputText.text {
+            return Int(text) ?? 0
+        }
+        return 0
+    }
+    
     private func adjustTextViewHeight() {
         let newSize = inputText.sizeThatFits(CGSize(width: inputText.frame.width, height: .infinity))
         let newHeight = max(newSize.height, 66)

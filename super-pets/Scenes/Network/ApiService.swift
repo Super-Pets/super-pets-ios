@@ -51,16 +51,15 @@ final class ApiService: NSObject, ApiServiceProtocol, URLSessionDelegate {
     
     func registerAnimal(animal: RegisterAnimalParams, completion: @escaping (Result<RegisterCompletedModel, ApiError>) -> Void) {
         let body: [String: Any] = [
-            "Name": animal.name,
-            "Species": animal.specie,
-            "Description": animal.animalDescription,
-            "Gender": animal.gender,
-            "Age": animal.age,
-            "Size": animal.size,
-            "Local": animal.state,
-            "Vaccines": animal.vaccine,
-            "Castration": animal.castration,
-            "image": animal.image,
+            "name": animal.name,
+            "species": animal.species,
+            "description": animal.description,
+            "gender": animal.gender,
+            "age": animal.age,
+            "size": animal.size,
+            "local": animal.local,
+            "vaccines": animal.vaccines,
+            "castration": animal.castration
         ]
         
         fetchData(info: .register, body: body, completion: completion)

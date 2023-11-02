@@ -92,7 +92,7 @@ final class RegisterViewController: UIViewController, ViewConfiguration {
             name: nameTextField.getCurrentText(),
             species: speciesTextField.getCurrentText(),
             gender: genderTextField.getCurrentText(),
-            age: ageTextField.getCurrentText(),
+            age: ageTextField.getAge(),
             size: sizeTextField.getCurrentText(),
             state: stateTextField.getCurrentText(),
             vaccines: vaccineTextField.getCurrentText(),
