@@ -98,6 +98,29 @@ extension AdoptViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        trailingSwipeActionsConfigurationForItemAt indexPath: IndexPath)
+    -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completionHandler) in
+            guard let self = self else {
+                completionHandler(false)
+                return
+            }
+            let animalID = self.animals[indexPath.row].id
+            let stringID = "\(animalID)"
+            self.viewModel?.deleteAnimal(withId: stringID, at: indexPath.row)
+            completionHandler(true)
+        }
+        
+        deleteAction.backgroundColor = UIColor.red
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = false // isso previne que a ação seja realizada com um swipe completo
+        
+        return configuration
+    }
 }
 
 extension AdoptViewController: UICollectionViewDelegateFlowLayout {
@@ -124,5 +147,10 @@ extension AdoptViewController: AdoptViewModelDelegate {
     func didFetchAnimals(_ animals: [AnimalsModel]) {
         self.animals = animals
         self.collection.reloadData()
+    }
+    
+    func didDeleteAnimal(at index: Int) {
+        animals.remove(at: index)
+        collection.deleteItems(at: [IndexPath(row: index, section: 0)])
     }
 }

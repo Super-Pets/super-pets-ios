@@ -11,6 +11,7 @@ enum ApiError: Error {
 enum TypeOfInformation {
     case register
     case adoptables
+    case delete(String)
     
     var baseURL: String {
         "http://localhost:5097"
@@ -22,6 +23,8 @@ enum TypeOfInformation {
             return "/animals"
         case .adoptables:
             return "/animals"
+        case .delete(let id):
+            return "/animals/\(id)"
         }
     }
     
@@ -35,6 +38,8 @@ enum TypeOfInformation {
             return "POST"
         case .adoptables:
             return "GET"
+        case .delete:
+            return "DELETE"
         }
     }
 }
@@ -42,6 +47,7 @@ enum TypeOfInformation {
 protocol ApiServiceProtocol {
     func fetchAdoptables(completion: @escaping (Result<[AnimalsModel], ApiError>) -> Void)
     func registerAnimal(animal: RegisterAnimalParams, completion: @escaping (Result<RegisterCompletedModel, ApiError>) -> Void)
+    func deleteAnimal(byId id: String, completion: @escaping (Result<Void, ApiError>) -> Void)
 }
 
 final class ApiService: NSObject, ApiServiceProtocol, URLSessionDelegate {
@@ -83,6 +89,29 @@ final class ApiService: NSObject, ApiServiceProtocol, URLSessionDelegate {
         } else {
             completionHandler(.performDefaultHandling, nil)
         }
+    }
+    
+    func deleteAnimal(byId id: String, completion: @escaping (Result<Void, ApiError>) -> Void) {
+        guard let url = TypeOfInformation.delete(id).url else {
+            return completion(.failure(ApiError.invalidURL))
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        let dataTask = session.dataTask(with: request) { _, response, error in
+            if let error = error {
+                completion(.failure(.requestError(description: error.localizedDescription)))
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            DispatchQueue.main.async {
+                completion(.success(()))
+            }
+        }
+        dataTask.resume()
     }
     
     private func fetchData<T: Codable>(info: TypeOfInformation, body: [String: Any]?, completion: @escaping (Result<T, ApiError>) -> Void) {

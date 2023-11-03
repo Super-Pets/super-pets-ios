@@ -2,10 +2,12 @@ import Foundation
 
 protocol AdoptViewModelDelegate: AnyObject {
     func didFetchAnimals(_ animals: [AnimalsModel])
+    func didDeleteAnimal(at index: Int)
 }
 
 protocol AdoptViewModelProtocol {
     func getAnimals()
+    func deleteAnimal(withId id: String, at index: Int)
     var delegate: AdoptViewModelDelegate? { get set }
 }
 
@@ -29,6 +31,18 @@ final class AdoptViewModel: AdoptViewModelProtocol {
                 self?.delegate?.didFetchAnimals(response)
             case .failure(_):
                 break
+            }
+        }
+    }
+    
+    func deleteAnimal(withId id: String, at index: Int) {
+        apiService.deleteAnimal(byId: id) { [weak self] result in
+            switch result {
+            case .success():
+                self?.response?.remove(at: index)
+                self?.delegate?.didDeleteAnimal(at: index)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
